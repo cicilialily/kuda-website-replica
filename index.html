@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kuda — Get more with Kuda</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',sans-serif;background:#fff;color:#1a0533;overflow-x:hidden;}
+
+/* NAV */
+nav{display:flex;align-items:center;padding:0 48px;height:68px;border-bottom:1px solid #f0edf8;position:sticky;top:0;background:#fff;z-index:100;}
+.nav-logo{display:flex;flex-direction:column;margin-right:40px;cursor:pointer;}
+.nav-logo .wordmark{font-size:22px;font-weight:800;color:#1a0533;letter-spacing:-1px;}
+.nav-logo .wordmark span{color:#5b21b6;}
+.nav-logo .sub{font-size:8px;letter-spacing:2px;color:#888;font-weight:600;text-transform:uppercase;}
+.nav-links{display:flex;gap:4px;flex:1;}
+.nav-link{display:flex;align-items:center;gap:4px;padding:8px 14px;font-size:14px;font-weight:500;color:#333;cursor:pointer;border-radius:8px;transition:background 0.15s;}
+.nav-link:hover{background:#f5f3ff;color:#5b21b6;}
+.nav-link i{font-size:13px;color:#888;}
+.nav-actions{display:flex;align-items:center;gap:12px;}
+.btn-signin{font-size:14px;font-weight:500;color:#1a0533;padding:8px 18px;cursor:pointer;border:none;background:none;}
+.btn-join{background:#5b21b6;color:#fff;font-size:14px;font-weight:600;padding:10px 22px;border-radius:8px;border:none;cursor:pointer;}
+.btn-join:hover{background:#4c1d95;}
+.flag{width:32px;height:32px;border-radius:50%;overflow:hidden;cursor:pointer;border:2px solid #eee;background:linear-gradient(#008751 33%,#fff 33%,#fff 66%,#008751 66%);}
+
+/* HERO */
+.hero{display:flex;align-items:center;padding:60px 48px;min-height:calc(100vh - 68px);gap:40px;background:#fafafa;}
+.hero-left{flex:1;max-width:520px;}
+.hero-left h1{font-size:52px;font-weight:800;color:#1a0533;line-height:1.1;margin-bottom:20px;}
+.hero-left p{font-size:16px;color:#555;line-height:1.7;max-width:420px;margin-bottom:32px;}
+.store-btns{display:flex;gap:14px;margin-bottom:32px;flex-wrap:wrap;}
+.store-btn{display:flex;align-items:center;gap:10px;background:#111;color:#fff;padding:10px 20px;border-radius:10px;cursor:pointer;text-decoration:none;}
+.store-btn:hover{background:#333;}
+.store-btn .store-icon{font-size:24px;}
+.store-btn .store-text .line1{font-size:10px;color:#bbb;}
+.store-btn .store-text .line2{font-size:15px;font-weight:600;}
+.trust-badges{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.trust-badge{display:flex;align-items:center;gap:8px;font-size:12px;color:#777;}
+.trust-badge .dot{width:6px;height:6px;border-radius:50%;background:#ccc;}
+
+/* HERO RIGHT */
+.hero-right{flex:1;display:flex;justify-content:center;align-items:center;position:relative;height:560px;}
+
+/* Pulsing rings */
+.ring{position:absolute;border-radius:50%;border:1px solid #e0d9f5;animation:pulse-ring 3s ease-in-out infinite;}
+.ring1{width:320px;height:320px;animation-delay:0s;}
+.ring2{width:430px;height:430px;animation-delay:0.6s;}
+.ring3{width:540px;height:540px;animation-delay:1.2s;}
+@keyframes pulse-ring{
+  0%,100%{opacity:0.5;transform:scale(1);}
+  50%{opacity:1;transform:scale(1.02);}
+}
+
+/* Phone */
+.phone{position:relative;z-index:5;width:210px;background:#fff;border-radius:28px;box-shadow:0 24px 60px rgba(91,33,182,0.22);overflow:hidden;border:2px solid #e8e4f4;animation:float-phone 4s ease-in-out infinite;}
+@keyframes float-phone{
+  0%,100%{transform:translateY(0px);}
+  50%{transform:translateY(-12px);}
+}
+.phone-screen{padding:14px 11px;}
+.phone-topbar{display:flex;justify-content:space-between;margin-bottom:10px;}
+.phone-topbar .time{font-size:10px;font-weight:700;}
+.phone-user{display:flex;align-items:center;gap:7px;margin-bottom:12px;}
+.phone-avatar{width:28px;height:28px;border-radius:50%;background:#5b21b6;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700;}
+.phone-greeting b{font-size:11px;color:#1a0533;display:block;}
+.phone-greeting span{font-size:9px;color:#aaa;}
+.phone-balance-card{background:linear-gradient(135deg,#5b21b6,#7c3aed);border-radius:12px;padding:12px;color:#fff;margin-bottom:10px;}
+.bal-label{font-size:8px;color:rgba(255,255,255,0.7);margin-bottom:3px;}
+.bal-amount{font-size:17px;font-weight:800;letter-spacing:-0.5px;}
+.bal-sub{font-size:7px;color:rgba(255,255,255,0.6);margin-top:2px;}
+.phone-actions{display:flex;justify-content:space-around;margin-bottom:10px;}
+.ph-action{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.ph-action .ic{width:28px;height:28px;border-radius:50%;background:#f0edf8;display:flex;align-items:center;justify-content:center;font-size:12px;color:#5b21b6;}
+.ph-action span{font-size:7px;color:#555;}
+.phone-txs .tx-t{font-size:8px;font-weight:700;color:#1a0533;margin-bottom:5px;}
+.ph-tx{display:flex;align-items:center;gap:6px;margin-bottom:5px;}
+.ph-tx .ico{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;}
+.ph-tx .ico.cr{background:#ecfdf5;color:#059669;}
+.ph-tx .ico.dr{background:#fef2f2;color:#dc2626;}
+.ph-tx .info{flex:1;}
+.ph-tx .info .n{font-size:8px;font-weight:600;color:#1a0533;}
+.ph-tx .info .d{font-size:7px;color:#bbb;}
+.ph-tx .amt{font-size:8px;font-weight:700;}
+.ph-tx .amt.cr{color:#059669;}
+.ph-tx .amt.dr{color:#dc2626;}
+
+/* ORBITING ICONS */
+.orbit-wrapper{position:absolute;width:0;height:0;top:50%;left:50%;z-index:6;}
+.orbit-icon{
+  position:absolute;
+  width:44px;height:44px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 4px 16px rgba(91,33,182,0.18);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+  border:1.5px solid #ede9fe;
+}
+
+.ow1{animation:orbit1 10s linear infinite;}
+.ow1 .orbit-icon{transform:translate(-22px,-222px);animation:counter1 10s linear infinite;color:#5b21b6;}
+@keyframes orbit1{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes counter1{from{transform:translate(-22px,-222px) rotate(0deg);}to{transform:translate(-22px,-222px) rotate(-360deg);}}
+
+.ow2{animation:orbit2 13s linear infinite;}
+.ow2 .orbit-icon{transform:translate(-22px,-232px);animation:counter2 13s linear infinite;color:#059669;}
+@keyframes orbit2{from{transform:rotate(90deg);}to{transform:rotate(450deg);}}
+@keyframes counter2{from{transform:translate(-22px,-232px) rotate(-90deg);}to{transform:translate(-22px,-232px) rotate(-450deg);}}
+
+.ow3{animation:orbit3 9s linear infinite;}
+.ow3 .orbit-icon{transform:translate(-22px,-212px);animation:counter3 9s linear infinite;color:#dc2626;}
+@keyframes orbit3{from{transform:rotate(180deg);}to{transform:rotate(540deg);}}
+@keyframes counter3{from{transform:translate(-22px,-212px) rotate(-180deg);}to{transform:translate(-22px,-212px) rotate(-540deg);}}
+
+.ow4{animation:orbit4 11s linear infinite;}
+.ow4 .orbit-icon{transform:translate(-22px,-242px);animation:counter4 11s linear infinite;color:#d97706;}
+@keyframes orbit4{from{transform:rotate(270deg);}to{transform:rotate(630deg);}}
+@keyframes counter4{from{transform:translate(-22px,-242px) rotate(-270deg);}to{transform:translate(-22px,-242px) rotate(-630deg);}}
+
+.ow5{animation:orbit5 14s linear infinite;}
+.ow5 .orbit-icon{transform:translate(-22px,-217px);animation:counter5 14s linear infinite;color:#7c3aed;}
+@keyframes orbit5{from{transform:rotate(45deg);}to{transform:rotate(405deg);}}
+@keyframes counter5{from{transform:translate(-22px,-217px) rotate(-45deg);}to{transform:translate(-22px,-217px) rotate(-405deg);}}
+
+.ow6{animation:orbit6 12s linear infinite;}
+.ow6 .orbit-icon{transform:translate(-22px,-227px);animation:counter6 12s linear infinite;color:#0891b2;}
+@keyframes orbit6{from{transform:rotate(225deg);}to{transform:rotate(585deg);}}
+@keyframes counter6{from{transform:translate(-22px,-227px) rotate(-225deg);}to{transform:translate(-22px,-227px) rotate(-585deg);}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .hero{flex-direction:column;padding:40px 20px;min-height:auto;text-align:center;}
+  .hero-left h1{font-size:36px;}
+  .hero-left p{margin:0 auto 28px;}
+  .store-btns{justify-content:center;}
+  .trust-badges{justify-content:center;}
+  .hero-right{height:420px;width:100%;}
+  .ring1{width:220px;height:220px;}
+  .ring2{width:300px;height:300px;}
+  .ring3{width:380px;height:380px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="wordmark">&#10022;&nbsp;kuda<span>.</span></div>
+    <div class="sub">Microfinance Bank</div>
+  </div>
+  <div class="nav-links">
+    <div class="nav-link">Personal <i class="ti ti-chevron-down"></i></div>
+    <div class="nav-link">Business <i class="ti ti-chevron-down"></i></div>
+    <div class="nav-link">Company <i class="ti ti-chevron-down"></i></div>
+    <div class="nav-link">Help <i class="ti ti-chevron-down"></i></div>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-signin">Sign In</button>
+    <button class="btn-join">Join Kuda</button>
+    <div class="flag"></div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <h1>Get more with<br>Kuda.</h1>
+    <p>Earn 50 Kuda Coins on your Tier 3 Kuda account to unlock cashback, discounts, budgeting, and more Premium rewards.</p>
+    <div class="store-btns">
+      <a class="store-btn" href="#">
+        <i class="ti ti-brand-apple store-icon"></i>
+        <div class="store-text">
+          <div class="line1">Download on the</div>
+          <div class="line2">App Store</div>
+        </div>
+      </a>
+      <a class="store-btn" href="#">
+        <i class="ti ti-brand-google-play store-icon"></i>
+        <div class="store-text">
+          <div class="line1">GET IT ON</div>
+          <div class="line2">Google Play</div>
+        </div>
+      </a>
+    </div>
+    <div class="trust-badges">
+      <div class="trust-badge"><div class="dot"></div> Fully Licensed by the CBN</div>
+      <div class="trust-badge"><div class="dot"></div> Deposits Insured by NDIC</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+
+    <div class="ring ring1"></div>
+    <div class="ring ring2"></div>
+    <div class="ring ring3"></div>
+
+    
+    <div class="orbit-wrapper ow1"><div class="orbit-icon"><i class="ti ti-send"></i></div></div>
+    <div class="orbit-wrapper ow2"><div class="orbit-icon"><i class="ti ti-piggy-bank"></i></div></div>
+    <div class="orbit-wrapper ow3"><div class="orbit-icon"><i class="ti ti-credit-card"></i></div></div>
+    <div class="orbit-wrapper ow4"><div class="orbit-icon"><i class="ti ti-device-mobile"></i></div></div>
+    <div class="orbit-wrapper ow5"><div class="orbit-icon"><i class="ti ti-chart-line"></i></div></div>
+    <div class="orbit-wrapper ow6"><div class="orbit-icon"><i class="ti ti-shield-check"></i></div></div>
+
+   
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="phone-topbar">
+          <span class="time">9:41</span>
+          <span style="font-size:9px;color:#aaa;">●●●</span>
+        </div>
+        <div class="phone-user">
+          <div class="phone-avatar">DA</div>
+          <div class="phone-greeting">
+            <b>Hi, Daniel 👋</b>
+            <span>Welcome back</span>
+          </div>
+        </div>
+        <div class="phone-balance-card">
+          <div class="bal-label">Available Balance</div>
+          <div class="bal-amount">₦150,600.00</div>
+          <div class="bal-sub">Kuda · 0123456789</div>
+        </div>
+        <div class="phone-actions">
+          <div class="ph-action"><div class="ic"><i class="ti ti-send"></i></div><span>Transfer</span></div>
+          <div class="ph-action"><div class="ic"><i class="ti ti-download"></i></div><span>Add Money</span></div>
+          <div class="ph-action"><div class="ic"><i class="ti ti-device-mobile"></i></div><span>Airtime</span></div>
+          <div class="ph-action"><div class="ic"><i class="ti ti-file-invoice"></i></div><span>Bills</span></div>
+        </div>
+        <div class="phone-txs">
+          <div class="tx-t">Recent Transactions</div>
+          <div class="ph-tx">
+            <div class="ico cr"><i class="ti ti-arrow-down-left"></i></div>
+            <div class="info"><div class="n">Salary — Paystack</div><div class="d">Today</div></div>
+            <span class="amt cr">+₦250k</span>
+          </div>
+          <div class="ph-tx">
+            <div class="ico dr"><i class="ti ti-arrow-up-right"></i></div>
+            <div class="info"><div class="n">Transfer to Ada</div><div class="d">Yesterday</div></div>
+            <span class="amt dr">-₦15k</span>
+          </div>
+          <div class="ph-tx">
+            <div class="ico dr"><i class="ti ti-bolt"></i></div>
+            <div class="info"><div class="n">EKEDC Electricity</div><div class="d">27 May</div></div>
+            <span class="amt dr">-₦8.5k</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
