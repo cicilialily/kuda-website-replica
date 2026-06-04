@@ -1,257 +1,741 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kuda — Get more with Kuda</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Segoe UI',sans-serif;background:#fff;color:#1a0533;overflow-x:hidden;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Kuda Clone</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
 
-/* NAV */
-nav{display:flex;align-items:center;padding:0 48px;height:68px;border-bottom:1px solid #f0edf8;position:sticky;top:0;background:#fff;z-index:100;}
-.nav-logo{display:flex;flex-direction:column;margin-right:40px;cursor:pointer;}
-.nav-logo .wordmark{font-size:22px;font-weight:800;color:#1a0533;letter-spacing:-1px;}
-.nav-logo .wordmark span{color:#5b21b6;}
-.nav-logo .sub{font-size:8px;letter-spacing:2px;color:#888;font-weight:600;text-transform:uppercase;}
-.nav-links{display:flex;gap:4px;flex:1;}
-.nav-link{display:flex;align-items:center;gap:4px;padding:8px 14px;font-size:14px;font-weight:500;color:#333;cursor:pointer;border-radius:8px;transition:background 0.15s;}
-.nav-link:hover{background:#f5f3ff;color:#5b21b6;}
-.nav-link i{font-size:13px;color:#888;}
-.nav-actions{display:flex;align-items:center;gap:12px;}
-.btn-signin{font-size:14px;font-weight:500;color:#1a0533;padding:8px 18px;cursor:pointer;border:none;background:none;}
-.btn-join{background:#5b21b6;color:#fff;font-size:14px;font-weight:600;padding:10px 22px;border-radius:8px;border:none;cursor:pointer;}
-.btn-join:hover{background:#4c1d95;}
-.flag{width:32px;height:32px;border-radius:50%;overflow:hidden;cursor:pointer;border:2px solid #eee;background:linear-gradient(#008751 33%,#fff 33%,#fff 66%,#008751 66%);}
+        body { background:#f8f9ff; overflow-x:hidden; }
 
-/* HERO */
-.hero{display:flex;align-items:center;padding:60px 48px;min-height:calc(100vh - 68px);gap:40px;background:#fafafa;}
-.hero-left{flex:1;max-width:520px;}
-.hero-left h1{font-size:52px;font-weight:800;color:#1a0533;line-height:1.1;margin-bottom:20px;}
-.hero-left p{font-size:16px;color:#555;line-height:1.7;max-width:420px;margin-bottom:32px;}
-.store-btns{display:flex;gap:14px;margin-bottom:32px;flex-wrap:wrap;}
-.store-btn{display:flex;align-items:center;gap:10px;background:#111;color:#fff;padding:10px 20px;border-radius:10px;cursor:pointer;text-decoration:none;}
-.store-btn:hover{background:#333;}
-.store-btn .store-icon{font-size:24px;}
-.store-btn .store-text .line1{font-size:10px;color:#bbb;}
-.store-btn .store-text .line2{font-size:15px;font-weight:600;}
-.trust-badges{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
-.trust-badge{display:flex;align-items:center;gap:8px;font-size:12px;color:#777;}
-.trust-badge .dot{width:6px;height:6px;border-radius:50%;background:#ccc;}
+        .logo {
+            text-decoration:none; font-size:28px; font-weight:bold; color:#40196d;
+            display:flex; align-items:center; gap:8px;
+        }
+        .logo img { width:30px; height:auto; }
+        .logo-sub { display:block; font-size:11px; color:#666; margin-top:-2px; }
 
-/* HERO RIGHT */
-.hero-right{flex:1;display:flex;justify-content:center;align-items:center;position:relative;height:560px;}
+        .nav-item {
+            text-decoration:none; color:#401964; font-weight:600;
+            display:inline-flex; align-items:center;
+        }
+        .nav-item i { margin-left:6px; font-size:12px; color:#666; }
 
-/* Pulsing rings */
-.ring{position:absolute;border-radius:50%;border:1px solid #e0d9f5;animation:pulse-ring 3s ease-in-out infinite;}
-.ring1{width:320px;height:320px;animation-delay:0s;}
-.ring2{width:430px;height:430px;animation-delay:0.6s;}
-.ring3{width:540px;height:540px;animation-delay:1.2s;}
-@keyframes pulse-ring{
-  0%,100%{opacity:0.5;transform:scale(1);}
-  50%{opacity:1;transform:scale(1.02);}
-}
+        .signin-btn { text-decoration:none; color:#40196d; font-weight:bold; }
 
-/* Phone */
-.phone{position:relative;z-index:5;width:210px;background:#fff;border-radius:28px;box-shadow:0 24px 60px rgba(91,33,182,0.22);overflow:hidden;border:2px solid #e8e4f4;animation:float-phone 4s ease-in-out infinite;}
-@keyframes float-phone{
-  0%,100%{transform:translateY(0px);}
-  50%{transform:translateY(-12px);}
-}
-.phone-screen{padding:14px 11px;}
-.phone-topbar{display:flex;justify-content:space-between;margin-bottom:10px;}
-.phone-topbar .time{font-size:10px;font-weight:700;}
-.phone-user{display:flex;align-items:center;gap:7px;margin-bottom:12px;}
-.phone-avatar{width:28px;height:28px;border-radius:50%;background:#5b21b6;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700;}
-.phone-greeting b{font-size:11px;color:#1a0533;display:block;}
-.phone-greeting span{font-size:9px;color:#aaa;}
-.phone-balance-card{background:linear-gradient(135deg,#5b21b6,#7c3aed);border-radius:12px;padding:12px;color:#fff;margin-bottom:10px;}
-.bal-label{font-size:8px;color:rgba(255,255,255,0.7);margin-bottom:3px;}
-.bal-amount{font-size:17px;font-weight:800;letter-spacing:-0.5px;}
-.bal-sub{font-size:7px;color:rgba(255,255,255,0.6);margin-top:2px;}
-.phone-actions{display:flex;justify-content:space-around;margin-bottom:10px;}
-.ph-action{display:flex;flex-direction:column;align-items:center;gap:3px;}
-.ph-action .ic{width:28px;height:28px;border-radius:50%;background:#f0edf8;display:flex;align-items:center;justify-content:center;font-size:12px;color:#5b21b6;}
-.ph-action span{font-size:7px;color:#555;}
-.phone-txs .tx-t{font-size:8px;font-weight:700;color:#1a0533;margin-bottom:5px;}
-.ph-tx{display:flex;align-items:center;gap:6px;margin-bottom:5px;}
-.ph-tx .ico{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;}
-.ph-tx .ico.cr{background:#ecfdf5;color:#059669;}
-.ph-tx .ico.dr{background:#fef2f2;color:#dc2626;}
-.ph-tx .info{flex:1;}
-.ph-tx .info .n{font-size:8px;font-weight:600;color:#1a0533;}
-.ph-tx .info .d{font-size:7px;color:#bbb;}
-.ph-tx .amt{font-size:8px;font-weight:700;}
-.ph-tx .amt.cr{color:#059669;}
-.ph-tx .amt.dr{color:#dc2626;}
+        .join-btn {
+            text-decoration:none; background:#40196d; color:white;
+            padding:10px 20px; border-radius:8px; font-weight:500; white-space:nowrap;
+        }
 
-/* ORBITING ICONS */
-.orbit-wrapper{position:absolute;width:0;height:0;top:50%;left:50%;z-index:6;}
-.orbit-icon{
-  position:absolute;
-  width:44px;height:44px;
-  border-radius:50%;
-  background:#fff;
-  box-shadow:0 4px 16px rgba(91,33,182,0.18);
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;
-  border:1.5px solid #ede9fe;
-}
+        .dropdown-btn {
+            background:none; border:none; color:#401964; font-size:16px;
+            font-weight:600; cursor:pointer; padding:0;
+            display:inline-flex; align-items:center; gap:6px;
+        }
+        .dropdown-content {
+            display:none; position:absolute; top:100%; left:0;
+            background:#fff; min-width:200px;
+            box-shadow:0 8px 24px rgba(0,0,0,0.08);
+            border-radius:8px; padding:15px 0; z-index:100;
+        }
+        .dropdown-content a {
+            color:#000; padding:12px 24px; text-decoration:none;
+            display:block; font-size:15px; transition:background 0.2s;
+        }
+        .dropdown-content a:hover { background:#f8f9fa; color:#401964; }
+        .dropdown-container:hover .dropdown-content { display:block; }
 
-.ow1{animation:orbit1 10s linear infinite;}
-.ow1 .orbit-icon{transform:translate(-22px,-222px);animation:counter1 10s linear infinite;color:#5b21b6;}
-@keyframes orbit1{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-@keyframes counter1{from{transform:translate(-22px,-222px) rotate(0deg);}to{transform:translate(-22px,-222px) rotate(-360deg);}}
+        .kuda-section h1 {
+            font-size:clamp(36px, 5vw, 64px);
+            color:#40196d; font-weight:800;
+        }
+        .kuda-section p { font-size:18px; line-height:1.6; color:#444; }
 
-.ow2{animation:orbit2 13s linear infinite;}
-.ow2 .orbit-icon{transform:translate(-22px,-232px);animation:counter2 13s linear infinite;color:#059669;}
-@keyframes orbit2{from{transform:rotate(90deg);}to{transform:rotate(450deg);}}
-@keyframes counter2{from{transform:translate(-22px,-232px) rotate(-90deg);}to{transform:translate(-22px,-232px) rotate(-450deg);}}
+        .badge-btn {
+            display:flex; align-items:center; gap:12px;
+            background:black; color:white; text-decoration:none;
+            padding:8px 18px; border-radius:8px; min-width:145px;
+        }
+        .badge-btn i { font-size:24px; }
+        .badge-text { display:flex; flex-direction:column; text-align:left; }
+        .badge-text .small-txt { font-size:9px; text-transform:uppercase; letter-spacing:0.5px; opacity:0.8; }
+        .badge-text .big-txt { font-size:15px; font-weight:bold; }
 
-.ow3{animation:orbit3 9s linear infinite;}
-.ow3 .orbit-icon{transform:translate(-22px,-212px);animation:counter3 9s linear infinite;color:#dc2626;}
-@keyframes orbit3{from{transform:rotate(180deg);}to{transform:rotate(540deg);}}
-@keyframes counter3{from{transform:translate(-22px,-212px) rotate(-180deg);}to{transform:translate(-22px,-212px) rotate(-540deg);}}
+        .license-text {
+            display:flex; align-items:center; gap:10px;
+            color:#777; font-size:14px; flex-wrap:wrap;
+        }
+        .license-text img { width:35px; height:auto; }
 
-.ow4{animation:orbit4 11s linear infinite;}
-.ow4 .orbit-icon{transform:translate(-22px,-242px);animation:counter4 11s linear infinite;color:#d97706;}
-@keyframes orbit4{from{transform:rotate(270deg);}to{transform:rotate(630deg);}}
-@keyframes counter4{from{transform:translate(-22px,-242px) rotate(-270deg);}to{transform:translate(-22px,-242px) rotate(-630deg);}}
+        .hero-visuals {
+            display:flex; justify-content:center; align-items:center;
+        }
 
-.ow5{animation:orbit5 14s linear infinite;}
-.ow5 .orbit-icon{transform:translate(-22px,-217px);animation:counter5 14s linear infinite;color:#7c3aed;}
-@keyframes orbit5{from{transform:rotate(45deg);}to{transform:rotate(405deg);}}
-@keyframes counter5{from{transform:translate(-22px,-217px) rotate(-45deg);}to{transform:translate(-22px,-217px) rotate(-405deg);}}
+        .animation-cluster {
+            position:relative;
+            width:550px; height:550px;
+            display:flex; justify-content:center; align-items:center;
+            flex-shrink:0;
+        }
 
-.ow6{animation:orbit6 12s linear infinite;}
-.ow6 .orbit-icon{transform:translate(-22px,-227px);animation:counter6 12s linear infinite;color:#0891b2;}
-@keyframes orbit6{from{transform:rotate(225deg);}to{transform:rotate(585deg);}}
-@keyframes counter6{from{transform:translate(-22px,-227px) rotate(-225deg);}to{transform:translate(-22px,-227px) rotate(-585deg);}}
+        .ring {
+            position:absolute;
+            border:1px solid rgba(120,120,255,0.15);
+            border-radius:50%;
+            top:50%; left:50%;
+            transform:translate(-50%,-50%);
+            pointer-events:none;
+        }
+        .ring1 { width:260px; height:260px; }
+        .ring2 { width:420px; height:420px; }
+        .ring3 { width:550px; height:550px; }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  nav{padding:0 20px;}
-  .nav-links{display:none;}
-  .hero{flex-direction:column;padding:40px 20px;min-height:auto;text-align:center;}
-  .hero-left h1{font-size:36px;}
-  .hero-left p{margin:0 auto 28px;}
-  .store-btns{justify-content:center;}
-  .trust-badges{justify-content:center;}
-  .hero-right{height:420px;width:100%;}
-  .ring1{width:220px;height:220px;}
-  .ring2{width:300px;height:300px;}
-  .ring3{width:380px;height:380px;}
-}
-</style>
+        .phone-wrapper {
+            position:relative; z-index:2;
+            animation:float 4s ease-in-out infinite alternate;
+        }
+        .kuda-phone {
+            width:320px; height:auto; display:block;
+            filter:drop-shadow(0 20px 30px rgba(0,0,0,.15));
+        }
+
+        .icon {
+            position:absolute;
+            width:55px; height:55px;
+            display:flex; align-items:center; justify-content:center;
+            border-radius:50%;
+            background:white;
+            box-shadow:0 10px 25px rgba(0,0,0,0.1);
+            font-size:22px; z-index:3; color:#40196d;
+            top:50%; left:50%;
+            margin-top:-27.5px; margin-left:-27.5px;
+            animation:orbit var(--duration) linear infinite;
+        }
+        .icon1 { --radius:-130px; --duration:12s; }
+        .icon2 { --radius: 210px; --duration:25s; }
+        .icon3 { --radius:-210px; --duration:18s; }
+        .icon4 { --radius: 275px; --duration:20s; }
+
+        @media (max-width: 991px) {
+            .animation-cluster { width:380px; height:380px; }
+            .ring1 { width:180px; height:180px; }
+            .ring2 { width:290px; height:290px; }
+            .ring3 { width:380px; height:380px; }
+            .kuda-phone { width:220px; }
+            .icon1 { --radius:-90px; }
+            .icon2 { --radius: 145px; }
+            .icon3 { --radius:-145px; }
+            .icon4 { --radius: 190px; }
+            .icon { width:40px; height:40px; font-size:17px; margin-top:-20px; margin-left:-20px; }
+        }
+
+        @media (max-width: 480px) {
+            .animation-cluster { width:300px; height:300px; }
+            .ring1 { width:140px; height:140px; }
+            .ring2 { width:230px; height:230px; }
+            .ring3 { width:300px; height:300px; }
+            .kuda-phone { width:170px; }
+            .icon1 { --radius:-70px; }
+            .icon2 { --radius: 115px; }
+            .icon3 { --radius:-115px; }
+            .icon4 { --radius: 150px; }
+        }
+
+        .feature-card {
+            background:#fff; padding:28px; border-radius:12px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.03);
+            display:flex; flex-direction:column; gap:16px;
+            transition:transform 0.3s; height:100%;
+        }
+        .feature-card:hover { transform:translateY(-5px); }
+        .feature-icon-wrapper {
+            width:40px; height:40px; background:#eaebff; color:#40196d;
+            border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px;
+        }
+        .feature-card p { color:#40196d; font-size:16px; font-weight:bold; line-height:1.5; margin:0; }
+
+        .content-section h2 {
+            font-size:clamp(26px, 3.5vw, 40px);
+            color:#40196d; font-weight:800; line-height:1.2;
+        }
+        .content-section p { font-size:15px; color:#333; line-height:1.6; }
+        .section-img { max-width:100%; height:auto; display:block; }
+
+        .lifestyle-link {
+            display:inline-flex; align-items:center; color:#40196d;
+            text-decoration:none; font-weight:bold; font-size:18px;
+            border-bottom:2px solid #40196d; padding-bottom:2px; transition:opacity 0.2s;
+        }
+        .lifestyle-link:hover { opacity:0.75; }
+        .lifestyle-link i { margin-left:8px; }
+
+        .section-heading {
+            text-align:center; color:#40196d;
+            font-size:clamp(30px,5vw,58px); font-weight:bold;
+        }
+        .testimonial-slider-container { width:100%; overflow:hidden; }
+        .testimonial-track {
+            display:flex; gap:24px; width:max-content;
+            animation:slide 30s linear infinite;
+        }
+        .testimonial-slider-container:hover .testimonial-track { animation-play-state:paused; }
+        .testimonial-card {
+            background:#fff; width:340px; padding:28px; border-radius:12px;
+            box-shadow:0 8px 25px rgba(0,0,0,0.05); border:1px solid #eaeaea;
+            display:flex; flex-direction:column; min-height:220px; flex-shrink:0;
+        }
+        .testimonial-text { color:#333; font-size:15px; line-height:1.6; flex:1; }
+        .testimonial-profile { display:flex; align-items:center; gap:14px; margin-top:20px; }
+        .profile-avatar {
+            width:50px; height:50px; border-radius:50%; flex-shrink:0;
+            display:flex; align-items:center; justify-content:center;
+            font-weight:bold; color:white; font-size:18px; overflow:hidden;
+        }
+        .profile-avatar.purple { background:#40196d; }
+        .profile-avatar img { width:100%; height:100%; object-fit:cover; }
+        .profile-name { font-size:15px; font-weight:bold; color:#000; }
+
+        .partner-row {
+            display:flex; flex-wrap:wrap;
+            justify-content:center; align-items:center; gap:30px 50px;
+        }
+        .partner-row img {
+            max-height:70px; width:auto; object-fit:contain;
+            opacity:0.9; transition:0.3s;
+        }
+        .partner-row img:hover { opacity:1; transform:scale(1.05); }
+
+        .compare-table {
+            border-radius:20px; background:#fff;
+            box-shadow:0 10px 40px rgba(0,0,0,.05);
+            overflow:hidden; border:1px solid #ececec;
+        }
+        .table-header, .table-row {
+            display:grid; grid-template-columns:1.2fr 1fr 1fr;
+            align-items:center; min-width:580px;
+        }
+        .table-header { background:#fafafa; font-size:clamp(18px,2.5vw,34px); font-weight:bold; color:#40196d; }
+        .table-header div, .table-row div { padding:22px 28px; }
+        .table-row { border-top:1px solid #ececec; font-size:clamp(13px,1.6vw,20px); }
+        .feature { font-weight:700; color:#111; }
+        .other-bank { text-align:center; color:#40196d; }
+        .kuda-bank { display:flex; justify-content:center; align-items:center; gap:8px; }
+        .kuda-bank img { width:55px; }
+        .table-row div:last-child { color:#40196d; font-weight:600; }
+
+        .more-card {
+            background:#fff; border-radius:12px; padding:36px;
+            box-shadow:0 8px 25px rgba(0,0,0,.04); transition:0.3s; height:100%;
+        }
+        .more-card:hover { transform:translateY(-8px); }
+        .more-icon {
+            width:45px; height:45px; border-radius:50%; background:#ececff; color:#40196d;
+            display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+        }
+        .more-card h3 { color:#40196d; font-size:20px; font-weight:800; margin-bottom:14px; }
+        .more-card p { color:#333; line-height:1.8; font-size:15px; margin-bottom:36px; }
+        .more-card a {
+            color:#40196d; font-weight:bold; font-size:15px;
+            text-decoration:none; border-bottom:2px solid #40196d; padding-bottom:2px;
+        }
+
+        .footer-logo { width:110px; height:auto; }
+        .footer-column h3 { color:#401965; font-size:15px; font-weight:700; margin-bottom:18px; }
+        .footer-column ul { list-style:none; padding:0; margin:0; }
+        .footer-column li { margin-bottom:12px; }
+        .footer-column a { color:#111; text-decoration:none; font-size:14px; transition:color 0.2s; }
+        .footer-column a:hover { color:#401965; }
+
+        .body-btn {
+            display:flex; align-items:center; gap:12px;
+            background:black; color:white; text-decoration:none;
+            padding:8px 18px; border-radius:8px; min-width:145px;
+        }
+        .body-btn i { font-size:22px; }
+
+        @keyframes slide {
+            0%   { transform:translateX(0); }
+            100% { transform:translateX(calc(-50% - 12px)); }
+        }
+        @keyframes orbit {
+            from { transform:rotate(0deg) translateY(var(--radius)) rotate(0deg); }
+            to   { transform:rotate(360deg) translateY(var(--radius)) rotate(-360deg); }
+        }
+        @keyframes float {
+            0%   { transform:translateY(0px); }
+            100% { transform:translateY(-15px); }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">
-    <div class="wordmark">&#10022;&nbsp;kuda<span>.</span></div>
-    <div class="sub">Microfinance Bank</div>
-  </div>
-  <div class="nav-links">
-    <div class="nav-link">Personal <i class="ti ti-chevron-down"></i></div>
-    <div class="nav-link">Business <i class="ti ti-chevron-down"></i></div>
-    <div class="nav-link">Company <i class="ti ti-chevron-down"></i></div>
-    <div class="nav-link">Help <i class="ti ti-chevron-down"></i></div>
-  </div>
-  <div class="nav-actions">
-    <button class="btn-signin">Sign In</button>
-    <button class="btn-join">Join Kuda</button>
-    <div class="flag"></div>
-  </div>
-</nav>
+<header class="bg-white shadow-sm sticky-top">
+    <div class="container-fluid px-3 px-md-4 px-xl-5 py-3 d-flex align-items-center justify-content-between gap-3">
 
-<section class="hero">
-  <div class="hero-left">
-    <h1>Get more with<br>Kuda.</h1>
-    <p>Earn 50 Kuda Coins on your Tier 3 Kuda account to unlock cashback, discounts, budgeting, and more Premium rewards.</p>
-    <div class="store-btns">
-      <a class="store-btn" href="#">
-        <i class="ti ti-brand-apple store-icon"></i>
-        <div class="store-text">
-          <div class="line1">Download on the</div>
-          <div class="line2">App Store</div>
+        <div class="d-flex align-items-center gap-4">
+            <div>
+                <a href="#" class="logo"><img src="kuda log.png" alt="Kuda logo">kuda.</a>
+                <span class="logo-sub">MICROFINANCE BANK</span>
+            </div>
+            <nav class="d-none d-lg-flex align-items-center gap-4">
+                <a href="#" class="nav-item">Personal <i class="fa-solid fa-caret-down"></i></a>
+                <a href="#" class="nav-item">Business <i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-container position-relative">
+                    <button class="dropdown-btn nav-item">Company <i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#">Blog</a>
+                        <a href="#">Press</a>
+                        <a href="#">Join Our Team</a>
+                        <a href="#">About Us</a>
+                        <a href="#">Kuda in Nigeria</a>
+                    </div>
+                </div>
+                <a href="#" class="nav-item">Help <i class="fa-solid fa-caret-down"></i></a>
+            </nav>
         </div>
-      </a>
-      <a class="store-btn" href="#">
-        <i class="ti ti-brand-google-play store-icon"></i>
-        <div class="store-text">
-          <div class="line1">GET IT ON</div>
-          <div class="line2">Google Play</div>
+
+        <div class="d-flex align-items-center gap-3">
+            <a href="#" class="signin-btn d-none d-sm-inline">Sign In</a>
+            <a href="#" class="join-btn">Join Kuda</a>
+            <div class="d-none d-sm-block">
+                <svg width="28" height="28" viewBox="0 0 30 30">
+                    <circle cx="15" cy="15" r="15" fill="#008751"></circle>
+                    <clipPath id="clip"><circle cx="15" cy="15" r="15"></circle></clipPath>
+                    <g clip-path="url(#clip)">
+                        <rect x="0" y="0" width="10" height="30" fill="#008751"></rect>
+                        <rect x="10" y="0" width="10" height="30" fill="white"></rect>
+                        <rect x="20" y="0" width="10" height="30" fill="#008751"></rect>
+                    </g>
+                </svg>
+            </div>
         </div>
-      </a>
     </div>
-    <div class="trust-badges">
-      <div class="trust-badge"><div class="dot"></div> Fully Licensed by the CBN</div>
-      <div class="trust-badge"><div class="dot"></div> Deposits Insured by NDIC</div>
+</header>
+
+
+<section class="py-5" style="background:#f8f9ff;">
+    <div class="container-fluid px-4 px-xl-5">
+        <div class="row align-items-center gy-5 py-md-3">
+
+            <div class="col-12 col-lg-5 kuda-section">
+                <h1 class="mb-4">Get more with Kuda.</h1>
+                <p class="mb-4">
+                    Experience the future of banking with Kuda. Enjoy seamless transactions,
+                    zero fees, and a user-friendly interface that puts you in control of your finances.
+                </p>
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <a href="#" class="badge-btn">
+                        <i class="fa-brands fa-apple"></i>
+                        <div class="badge-text">
+                            <span class="small-txt">Download on the</span>
+                            <span class="big-txt">App Store</span>
+                        </div>
+                    </a>
+                    <a href="#" class="badge-btn">
+                        <i class="fa-brands fa-google-play"></i>
+                        <div class="badge-text">
+                            <span class="small-txt">GET IT ON</span>
+                            <span class="big-txt">Google Play</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="license-text">
+                    <span>Fully Licensed by the CBN</span>
+                    <span>•</span>
+                    <span class="d-flex align-items-center gap-2">
+                        Deposits Insured by NDIC
+                        <img src="NDIC.png" alt="NDIC Logo">
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-7 hero-visuals">
+                <div class="animation-cluster">
+                    <div class="ring ring1"></div>
+                    <div class="ring ring2"></div>
+                    <div class="ring ring3"></div>
+                    <div class="phone-wrapper">
+                        <img src="kuda app.png" class="kuda-phone" alt="Kuda App">
+                    </div>
+                    <div class="icon icon1"><i class="fa-solid fa-credit-card"></i></div>
+                    <div class="icon icon2"><i class="fa-regular fa-address-card"></i></div>
+                    <div class="icon icon3"><i class="fa-solid fa-building-columns"></i></div>
+                    <div class="icon icon4"><i class="fa-solid fa-piggy-bank"></i></div>
+                </div>
+            </div>
+
+        </div>
     </div>
-  </div>
-
-  <div class="hero-right">
-
-    <div class="ring ring1"></div>
-    <div class="ring ring2"></div>
-    <div class="ring ring3"></div>
-
-    
-    <div class="orbit-wrapper ow1"><div class="orbit-icon"><i class="ti ti-send"></i></div></div>
-    <div class="orbit-wrapper ow2"><div class="orbit-icon"><i class="ti ti-piggy-bank"></i></div></div>
-    <div class="orbit-wrapper ow3"><div class="orbit-icon"><i class="ti ti-credit-card"></i></div></div>
-    <div class="orbit-wrapper ow4"><div class="orbit-icon"><i class="ti ti-device-mobile"></i></div></div>
-    <div class="orbit-wrapper ow5"><div class="orbit-icon"><i class="ti ti-chart-line"></i></div></div>
-    <div class="orbit-wrapper ow6"><div class="orbit-icon"><i class="ti ti-shield-check"></i></div></div>
-
-   
-    <div class="phone">
-      <div class="phone-screen">
-        <div class="phone-topbar">
-          <span class="time">9:41</span>
-          <span style="font-size:9px;color:#aaa;">●●●</span>
-        </div>
-        <div class="phone-user">
-          <div class="phone-avatar">DA</div>
-          <div class="phone-greeting">
-            <b>Hi, Daniel 👋</b>
-            <span>Welcome back</span>
-          </div>
-        </div>
-        <div class="phone-balance-card">
-          <div class="bal-label">Available Balance</div>
-          <div class="bal-amount">₦150,600.00</div>
-          <div class="bal-sub">Kuda · 0123456789</div>
-        </div>
-        <div class="phone-actions">
-          <div class="ph-action"><div class="ic"><i class="ti ti-send"></i></div><span>Transfer</span></div>
-          <div class="ph-action"><div class="ic"><i class="ti ti-download"></i></div><span>Add Money</span></div>
-          <div class="ph-action"><div class="ic"><i class="ti ti-device-mobile"></i></div><span>Airtime</span></div>
-          <div class="ph-action"><div class="ic"><i class="ti ti-file-invoice"></i></div><span>Bills</span></div>
-        </div>
-        <div class="phone-txs">
-          <div class="tx-t">Recent Transactions</div>
-          <div class="ph-tx">
-            <div class="ico cr"><i class="ti ti-arrow-down-left"></i></div>
-            <div class="info"><div class="n">Salary — Paystack</div><div class="d">Today</div></div>
-            <span class="amt cr">+₦250k</span>
-          </div>
-          <div class="ph-tx">
-            <div class="ico dr"><i class="ti ti-arrow-up-right"></i></div>
-            <div class="info"><div class="n">Transfer to Ada</div><div class="d">Yesterday</div></div>
-            <span class="amt dr">-₦15k</span>
-          </div>
-          <div class="ph-tx">
-            <div class="ico dr"><i class="ti ti-bolt"></i></div>
-            <div class="info"><div class="n">EKEDC Electricity</div><div class="d">27 May</div></div>
-            <span class="amt dr">-₦8.5k</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
+
+<section class="py-5" style="background:#f0f1fb;">
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper"><i class="fa-solid fa-credit-card"></i></div>
+                    <p>Order a Kuda card on the app with pickup and delivery options.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper"><i class="fa-solid fa-bolt"></i></div>
+                    <p>Enjoy cashless payment options online and offline.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper"><i class="fa-solid fa-network-wired"></i></div>
+                    <p>Pay your essential bills and buy gift cards easily.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper"><i class="fa-solid fa-paper-plane"></i></div>
+                    <p>Get 25 free transfers to Nigerian banks every month.</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <p>Save money automatically any time you spend.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="content-section py-5" style="background:#f8f9ff;">
+    <div class="container py-md-4">
+        <div class="row align-items-center gy-4">
+            <div class="col-12 col-md-6">
+                <h2 class="mb-4">Your phone + our app + a debit card = a simpler life.</h2>
+                <p class="mb-4">We designed a money app for your lifestyle, and you can get a debit card to go with it. That's all you need to make the right money moves.</p>
+                <a href="#" class="lifestyle-link">Open An Account in Minutes <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class="col-12 col-md-6 text-center">
+                <img src="kuda img.png" alt="Lifestyle Illustration" class="section-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section py-5" style="background:#fff;">
+    <div class="container py-md-4">
+        <div class="row align-items-center gy-4">
+            <div class="col-12 col-md-6 text-center order-2 order-md-1">
+                <img src="kuda dets.png" alt="Kuda Details" class="section-img">
+            </div>
+            <div class="col-12 col-md-6 order-1 order-md-2">
+                <h2 class="mb-4">It's your money, we just help you manage it.</h2>
+                <p>Save it, spend it, send it. It's up to you. Whatever you choose to do with your money, we'll make sure it's done better and free of charge.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section py-5" style="background:#f8f9ff;">
+    <div class="container py-md-4">
+        <div class="row align-items-center gy-4">
+            <div class="col-12 col-md-6">
+                <h2 class="mb-4">Save money as you spend it — seriously.</h2>
+                <p class="mb-4">You can't avoid spending. That's how you pay for your needs. But we can help you put money away every time you pay for something.</p>
+                <a href="#" class="lifestyle-link">See all your details <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class="col-12 col-md-6 text-center">
+                <img src="kuda views.png" alt="Savings Illustration" class="section-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section py-5" style="background:#fff;">
+    <div class="container py-md-4">
+        <div class="row align-items-center gy-4">
+            <div class="col-12 col-md-6 text-center order-2 order-md-1">
+                <img src="kuda bloc.png" alt="Card Safety" class="section-img">
+            </div>
+            <div class="col-12 col-md-6 order-1 order-md-2">
+                <h2 class="mb-4">Turn off access, turn on safety.</h2>
+                <p class="mb-4">Life happens. Debit cards go missing. Block your missing card on the app so no one can use it.</p>
+                <a href="#" class="lifestyle-link">Learn more about cards <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section py-5" style="background:#f8f9ff;">
+    <div class="container py-md-4">
+        <div class="row align-items-center gy-4">
+            <div class="col-12 col-md-6">
+                <h2 class="mb-4">We are always happy to help.</h2>
+                <p class="mb-4">Chat on the app, slide into our DMs, tweet, email or call. However you reach out, there'll always be a friendly person to make your life easy.</p>
+                <a href="#" class="lifestyle-link">Get help <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class="col-12 col-md-6 text-center">
+                <img src="kuda support.png" alt="Support Illustration" class="section-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section py-5" style="background:#fff;">
+    <div class="container py-md-4">
+        <div class="row align-items-center gy-4">
+            <div class="col-12 col-md-6 text-center order-2 order-md-1">
+                <img src="kuda money.png" alt="Fees Illustration" class="section-img">
+            </div>
+            <div class="col-12 col-md-6 order-1 order-md-2">
+                <h2 class="mb-4">Fees as clear as glass.</h2>
+                <p class="mb-4">We're serious about free banking, and we will never charge you for anything without your consent.</p>
+                <a href="#" class="lifestyle-link">See all our fees <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5" style="background:#fff; overflow:hidden;">
+    <p class="section-heading mb-5">Don't just take our word for it</p>
+    <div class="testimonial-slider-container">
+        <div class="testimonial-track">
+            <div class="testimonial-card">
+                <p class="testimonial-text">Just joined the best Digital Bank in Nigeria. I have no complaints whatsoever since I started using Kuda.</p>
+                <div class="testimonial-profile"><div class="profile-avatar purple">T</div><span class="profile-name">Tomisinv</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">I highly recommend this app, it does what it says "The bank of the free". I have received my Kuda card.</p>
+                <div class="testimonial-profile"><div class="profile-avatar"><img src="Iyanu.jpg" alt="Ahmed Iyanu"></div><span class="profile-name">Ahmed Iyanu</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Never thought an app would stylishly become my everyday way to bank and have access to physical cash. @kudabank is sleek.</p>
+                <div class="testimonial-profile"><div class="profile-avatar"><img src="Noah Beak.jpg" alt="Noah Beak"></div><span class="profile-name">Noah Beak</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Kudabank had a dispensing error... reached out to them on twitter and my money is back.</p>
+                <div class="testimonial-profile"><div class="profile-avatar"><img src="Naomi.jpg" alt="Oladiran Naomi"></div><span class="profile-name">Oladiran Naomi</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Just joined the best Digital Bank in Nigeria. I have no complaints whatsoever since I started using Kuda.</p>
+                <div class="testimonial-profile"><div class="profile-avatar purple">T</div><span class="profile-name">Tomisin</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">I highly recommend this app, it does what it says "The bank of the free". I have received my Kuda card.</p>
+                <div class="testimonial-profile"><div class="profile-avatar purple">I</div><span class="profile-name">Adewale Adeife</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Never thought an app would stylishly become my everyday way to bank and have access to physical cash. @kudabank is sleek.</p>
+                <div class="testimonial-profile"><div class="profile-avatar"><img src="richard.jpg" alt="Richard Trevor"></div><span class="profile-name">Richard Trevor</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Kudabank had a dispensing error... reached out to them on twitter and my money is back. Shout out to Maxwell and Norah.</p>
+                <div class="testimonial-profile"><div class="profile-avatar purple">K</div><span class="profile-name">Raymond Kudu</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Just joined the best Digital Bank in Nigeria. I have no complaints whatsoever since I started using Kuda.</p>
+                <div class="testimonial-profile"><div class="profile-avatar purple">T</div><span class="profile-name">Tomisinv</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">I highly recommend this app, it does what it says "The bank of the free". I have received my Kuda card.</p>
+                <div class="testimonial-profile"><div class="profile-avatar"><img src="Iyanu.jpg" alt="Ahmed Iyanu"></div><span class="profile-name">Ahmed Iyanu</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Never thought an app would stylishly become my everyday way to bank and have access to physical cash. @kudabank is sleek.</p>
+                <div class="testimonial-profile"><div class="profile-avatar"><img src="Noah Beak.jpg" alt="Noah Beak"></div><span class="profile-name">Noah Beak</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Kudabank had a dispensing error... reached out to them on twitter and my money is back.</p>
+                <div class="testimonial-profile"><div class="profile-avatar"><img src="Naomi.jpg" alt="Oladiran Naomi"></div><span class="profile-name">Oladiran Naomi</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Never thought an app would stylishly become my everyday way to bank. @kudabank is sleek.</p>
+                <div class="testimonial-profile"><div class="profile-avatar"><img src="richard.jpg" alt="Richard Trevor"></div><span class="profile-name">Richard Trevor</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Kudabank had a dispensing error... reached out to them on twitter and my money is back. Shout out to Maxwell and Norah.</p>
+                <div class="testimonial-profile"><div class="profile-avatar purple">K</div><span class="profile-name">Raymond Kudu</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">I highly recommend this app, it does what it says "The bank of the free". I have received my Kuda card.</p>
+                <div class="testimonial-profile"><div class="profile-avatar purple">I</div><span class="profile-name">Adewale Adeife</span></div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">Just joined the best Digital Bank in Nigeria. I have no complaints whatsoever since I started using Kuda.</p>
+                <div class="testimonial-profile"><div class="profile-avatar purple">T</div><span class="profile-name">Tomisin</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5" style="background:#fff;">
+    <p class="section-heading mb-5">Our Partners</p>
+    <div class="container">
+        <div class="partner-row">
+            <img src="valar2.png" alt="Valar">
+            <img src="Entree capital.png" alt="Entree Capital">
+            <img src="SBI holdings.jpg" alt="SBI Holdings">
+            <img src="target gobal 3.png" alt="Target Global">
+            <img src="visa.png" alt="Visa">
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5" style="background:#fff;">
+    <div class="container-lg">
+        <h2 class="text-center mb-5" style="color:#40196d; font-weight:800; font-size:clamp(24px,3vw,35px);">Choose the freedom you need.</h2>
+        <div class="table-responsive">
+            <div class="compare-table">
+                <div class="table-header">
+                    <div></div>
+                    <div class="other-bank">Other Banks</div>
+                    <div class="kuda-bank"><img src="kuda log.png" alt="Kuda"> Kuda</div>
+                </div>
+                <div class="table-row"><div class="feature">Transfer Fee</div><div>Up to ₦50 plus V.A.T.</div><div>✓ 25 free transfers every month</div></div>
+                <div class="table-row"><div class="feature">Card Delivery</div><div>🤨</div><div>✓ Yes</div></div>
+                <div class="table-row"><div class="feature">Card Maintenance Fee</div><div>Up to ₦50 per quarter</div><div>✓ No</div></div>
+                <div class="table-row"><div class="feature">Alerts</div><div>Charge for SMS alerts</div><div>✓ Free instant notifications</div></div>
+                <div class="table-row"><div class="feature">Annual Interest</div><div>4%</div><div>✓ Up to 12%</div></div>
+                <div class="table-row"><div class="feature">Bill Payment Fee</div><div>Up to ₦100 per bill</div><div>✓ No</div></div>
+                <div class="table-row"><div class="feature">Instant Reversals</div><div>☹️</div><div>✓ Yes</div></div>
+                <div class="table-row"><div class="feature">Maintenance</div><div>Yes</div><div>✓ No</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5" style="background:#f8f9ff;">
+    <div class="container-lg">
+        <h2 class="text-center mb-5" style="color:#40196d; font-weight:800; font-size:clamp(24px,3vw,35px);">More for you</h2>
+        <div class="row g-4">
+            <div class="col-12 col-md-4">
+                <div class="more-card">
+                    <div class="more-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3>Kuda Business</h3>
+                    <p>Grow your business with our all-in-one business manager. Get a POS, bulk transfers, payroll and more.</p>
+                    <a href="#">Learn more <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="more-card">
+                    <div class="more-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                    <h3>Transfer &amp; Spend</h3>
+                    <p>Send money for free to any Nigerian account with 25 free transfers every month.</p>
+                    <a href="#">Learn more <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="more-card">
+                    <div class="more-icon"><i class="fa-solid fa-user"></i></div>
+                    <h3>Loans</h3>
+                    <p>Get instant loans up to ₦150,000 in the Kuda Loan app easily in Nigeria without paperwork.</p>
+                    <a href="#">Learn more <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-4 text-center" style="background:#f8f9ff;">
+    <div class="container">
+        <img src="kuda money (2).png" alt="Kuda money" class="img-fluid">
+    </div>
+</section>
+
+
+<footer class="py-5" style="background:#fff;">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-12 col-md-2 mb-3">
+                <img src="kuda log.png" alt="Kuda Logo" class="footer-logo">
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 footer-column">
+                <h3>Personal</h3>
+                <ul>
+                    <li><a href="#">Discover Personal</a></li>
+                    <li><a href="#">Transfer &amp; Spend</a></li>
+                    <li><a href="#">Save</a></li>
+                    <li><a href="#">Investments</a></li>
+                    <li><a href="#">Kuda card</a></li>
+                    <li><a href="#">Loans</a></li>
+                    <li><a href="#">Overdrafts</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 footer-column">
+                <h3>Business</h3>
+                <ul>
+                    <li><a href="#">Discover Business</a></li>
+                    <li><a href="#">Business Registration</a></li>
+                    <li><a href="#">softPOS</a></li>
+                    <li><a href="#">Invoicing</a></li>
+                    <li><a href="#">POS Machine</a></li>
+                    <li><a href="#">Business Loan</a></li>
+                    <li><a href="#">Business API</a></li>
+                    <li><a href="#">Join Kuda Business</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Join Our Team</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Kuda in Nigeria</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 footer-column">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">Get Help</a></li>
+                    <li><a href="#">Scam Awareness</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Self Help</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 footer-column">
+                <h3>Transparency</h3>
+                <ul>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Information Security Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Whistleblowing Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3 mt-5">
+            <a href="#" class="body-btn">
+                <i class="fa-brands fa-apple"></i>
+                <div class="badge-text">
+                    <span class="small-txt">Download on the</span>
+                    <span class="big-txt">App Store</span>
+                </div>
+            </a>
+            <a href="#" class="body-btn">
+                <i class="fa-brands fa-google-play"></i>
+                <div class="badge-text">
+                    <span class="small-txt">GET IT ON</span>
+                    <span class="big-txt">Google Play</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
